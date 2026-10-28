@@ -20,7 +20,7 @@
   --text:#eeeef0; --subtle:#5f606a; --muted:rgba(255,255,255,.08); --hl:rgba(255,255,255,.16); --hl2:rgba(255,255,255,.32);
   --blue:#fe5e00; --blue-top:#f05100; --blue-bg:#ab512d; --ok:#2cc160; --ok-text:#52de7e;
   --red:#e5484d; --red-top:#ef4452; --red-bg:#c72c3d; --gold:#ffc841;
-  --g-sinuca:#2fa35a; --felt:#8a3a1c; --felt-l:#c0582a; --felt-d:#3a1608;
+  --g-sinuca:#2fa35a; --felt:#6d2f16; --felt-l:#9a4626; --felt-d:#2e1107;
   --c-engenheiro:#4fb3ff; --c-comandante:#f5c542; --c-piloto:#ff5a36; --c-navegador:#e86bff; --c-explorador:#4dffb8; --c-bar:#ff9f43; --c-reis:#34d399; --c-gamer:#3d8bff;
   --f-display:"Sora", "Inter", system-ui, sans-serif; --f-ui:"Inter", system-ui, -apple-system, sans-serif;
 }
@@ -849,7 +849,7 @@ function recolorTable(old) {
   for (let i = 0; i < p.length; i += 4) {
     const r = p[i], gg = p[i + 1], b = p[i + 2], mx = Math.max(r, gg, b), mn = Math.min(r, gg, b);
     let coat = 0, rough = 170;
-    if (r > 45 && r > gg * 1.7 && r > b * 1.7) { const l = Math.min(1.3, r / 140); p[i] = 110 * l; p[i + 1] = 46 * l; p[i + 2] = 20 * l; rough = 245; }
+    if (r > 45 && r > gg * 1.7 && r > b * 1.7) { const l = Math.min(1.3, r / 140); p[i] = 82 * l; p[i + 1] = 34 * l; p[i + 2] = 15 * l; rough = 245; }
     else if (mn > 190) { p[i] = 17; p[i + 1] = 25; p[i + 2] = 46; coat = 255; rough = 105; }
     else if (r > 140 && gg > 60 && b < gg && r > b * 1.6) { p[i] = 205; p[i + 1] = 218; p[i + 2] = 240; coat = 200; rough = 90; } // orange sights → pearl
     else if (mx - mn < 20 && mx > 60) { const l = mx / 128; p[i] = 13 * l; p[i + 1] = 17 * l; p[i + 2] = 27 * l; coat = 180; rough = 120; }
@@ -929,7 +929,7 @@ function noiseFill(g, w, h, amp) { const id = g.getImageData(0, 0, w, h), d = id
 function feltTexture() {
   const cw = 1024, ch = 2048, px = x => (x + IX) / (2 * IX) * cw, py = z => (z + IZ) / (2 * IZ) * ch;
   const tex = canvasTex(cw, ch, g => {
-    g.fillStyle = '#8a3a1c'; g.fillRect(0, 0, cw, ch);
+    g.fillStyle = '#6d2f16'; g.fillRect(0, 0, cw, ch);
     for (let i = 0; i < 110; i++) { // soft mottling of real cloth
       const x = Math.random() * cw, y = Math.random() * ch, r = rnd(60, 240), gr = g.createRadialGradient(x, y, 0, x, y, r), l = Math.random() < .5;
       gr.addColorStop(0, l ? 'rgba(255,255,255,.03)' : 'rgba(0,0,0,.05)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(x - r, y - r, 2 * r, 2 * r);
